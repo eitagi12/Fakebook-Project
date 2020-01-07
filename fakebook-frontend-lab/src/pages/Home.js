@@ -14,12 +14,24 @@ class Home extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      owner: {
-        profilePic: this.props.user.profilePic
-      }
+
+  fetchData = () => {
+    Axios.get('/feed',{
+      user_id: this.props.user.id
+    }).then(result => {
+      this.setState({
+        postList: result.data
+      })
+      
+      console.log(result.data)
     })
+  };
+
+  componentDidMount() {
+    this.fetchData();
+    var intervalId = setInterval(this.fetchData, 60000);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({ intervalId: intervalId });
   }
 
   render() {
@@ -27,11 +39,12 @@ class Home extends React.Component {
       <Row type="flex" justify="center">
         <Col md={12} sm={16} xs={24}>
           <Row>
-            <CreatePost avatarSrc={this.state.owner.profilePic} />
+            <CreatePost avatarSrc={this.state.owner.profilePic} fetchItem={this.fetchData}/>
           </Row>
           <Row>
             <PostList
               postList={this.state.postList} owner={this.state.owner}
+              
             />
           </Row>
         </Col>

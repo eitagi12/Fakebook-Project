@@ -3,6 +3,8 @@ import { Row, Col, Button, Avatar } from 'antd'
 import TextArea from 'antd/lib/input/TextArea'
 
 export default class CreateComment extends React.Component {
+
+
   render() {
     return (
       <Row type="flex" align="middle" justify="center" style={{ marginTop: '20px' }}>
@@ -15,7 +17,7 @@ export default class CreateComment extends React.Component {
           <TextArea rows={1} />
         </Col>
         <Col md={5} sm={5} xs={5}>
-          <Button type="primary">
+          <Button type="primary" onClick={this.handleCommit}>
             Comment
           </Button>
         </Col>

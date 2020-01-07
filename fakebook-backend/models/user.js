@@ -6,12 +6,17 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING(255)
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING(100)
     },
+    last_name: {
+      type: DataTypes.STRING(100)
+    },
+    
     profile_img_url: {
       type: DataTypes.STRING(500)
     },
+    
     role: {
       type: DataTypes.ENUM("admin", "user")
     }

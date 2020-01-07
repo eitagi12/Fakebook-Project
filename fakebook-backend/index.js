@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 app.use(fileUpload());
+app.use(express.static('upload'))
 
 app.use(passport.initialize());
 app.use(cors())
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./config/passport/passport')
 
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ alter: true }).then(() => {
 
   userService(app, db)
   postService(app, db)
