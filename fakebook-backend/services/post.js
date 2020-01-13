@@ -107,6 +107,16 @@ module.exports = (app, db) => {
     passport.authenticate("jwt", { session: false }),
     function(req, res) {
       if (!req.files) {
+        db.post
+          .create({
+            message: req.body.message,
+            user_id: req.user.id
+          })
+          .then(result => res.status(201).json(result))
+          .catch(err => {
+            console.error(err);
+            res.status(400).json({ message: err.message });
+          });
         res.send({
           status: false,
           message: "No file uploaded"

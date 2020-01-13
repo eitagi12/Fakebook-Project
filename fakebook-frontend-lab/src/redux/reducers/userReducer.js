@@ -18,7 +18,8 @@ function userReducer(currentUser = initialState(), action) {
       return {
         id: action.id,
         role: action.role,
-        name: action.name,
+        first_name: action.first_name,
+        last_name: action.last_name,
         profilePic: action.profilePic
       }
     case LOGOUT_USER:

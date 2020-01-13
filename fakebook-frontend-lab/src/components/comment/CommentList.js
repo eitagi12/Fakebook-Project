@@ -22,7 +22,7 @@ export default class CommentList extends React.Component {
       <Row>
         <Col>
           <Row style={{ paddingBottom: '16px' }}>
-            <CreateComment owner={this.props.owner} />
+            <CreateComment owner={this.props.owner} postId={this.props.postId} fetchData={this.props.fetchData} />
           </Row>
           <Divider dashed style={{ marginTop: '5px', marginBottom: '5px' }} />
           {this.renderCommentsList()}

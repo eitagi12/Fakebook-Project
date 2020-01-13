@@ -13,12 +13,14 @@ export default class PostList extends React.Component {
   renderPostList() {
     return this.props.postList.map(post => (
       <Post key={post.id}
+        id={post.id}
         author={post.author}
         message={post.message}
         imgSrc={post.image_url}
         date={post.date}
         commentList={post.commentList}
         owner={this.props.owner}
+        fetchData={this.props.fetchData}
       />
     ))
   }

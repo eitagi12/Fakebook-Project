@@ -27,11 +27,12 @@ class Home extends React.Component {
     })
   };
 
+
   componentDidMount() {
     this.fetchData();
-    var intervalId = setInterval(this.fetchData, 60000);
-    // store intervalId in the state so it can be accessed later:
-    this.setState({ intervalId: intervalId });
+    // var intervalId = setInterval(this.fetchData, 60000);
+    // // store intervalId in the state so it can be accessed later:
+    // this.setState({ intervalId: intervalId });
   }
 
   render() {
@@ -44,7 +45,7 @@ class Home extends React.Component {
           <Row>
             <PostList
               postList={this.state.postList} owner={this.state.owner}
-              
+              fetchData={this.fetchData}
             />
           </Row>
         </Col>

@@ -7,6 +7,7 @@ import CommentList from '../comment/CommentList'
 export default class Post extends React.Component {
   render() {
     return (
+      
       <Card style={{ marginTop: '10px' }} bodyStyle={{ padding: '0' }}>
         <Row>
           <Col>
@@ -20,6 +21,8 @@ export default class Post extends React.Component {
             <Row>
               <CommentList owner={this.props.owner}
                 commentList={this.props.commentList}
+                postId={this.props.id}
+                fetchData={this.props.fetchData}
               />
             </Row>
           </Col>

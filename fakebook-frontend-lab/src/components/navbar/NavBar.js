@@ -12,6 +12,15 @@ class NavBar extends Component {
     window.location.reload(true);
   }
 
+  showName = () =>{
+    let firstname = this.props.user.first_name
+    let lastname = this.props.user.last_name
+    if(firstname && lastname){
+      return firstname + " " + lastname
+    }
+    return ''
+  }
+
   render() {
     const menu = (
       <Menu>
@@ -33,7 +42,10 @@ class NavBar extends Component {
       </Menu>
     );
 
+    let name = this.showName()
+
     return (
+      <div>
       <Row style={{ height: '100%' }} type="flex" align="middle">
         <Col span={4} style={{ height: '100%' }} type="flex" align="end">
           <Link to="/">
@@ -41,8 +53,8 @@ class NavBar extends Component {
           </Link>
         </Col>
         <Col span={20}>
-          <Row type="flex" justify="end">
-            <Col span={4} type="flex" align="end">
+        {name &&  (<Row type="flex" justify="end">
+          <Col span={4} type="flex" align="end">
               <Avatar
                 src={this.props.user.profilePic}
               />
@@ -50,13 +62,14 @@ class NavBar extends Component {
             <Dropdown overlay={menu}>
               <Col span={6} type="flex" align="start">
                 <Link to="/my-profile">
-                  <Button type="link">{this.props.user.name}</Button>
+                  <Button type="link">{name}</Button>
                 </Link>
               </Col>
             </Dropdown>
-          </Row>
+          </Row>)}
         </Col>
       </Row>
+      </div>
     )
   }
 }
